@@ -50,7 +50,7 @@ if os.path.exists(ZIP_FILE):
 
 # Zip the python folder
 if os.path.exists("python"):
-    shutil.make_archive(os.path.basename(ZIP_FILE), 'zip', root_dir=".", base_dir="python")
+    shutil.make_archive(os.path.splitext(ZIP_FILE)[0], 'zip', root_dir=".", base_dir="python")
     print(f"Zipped {PYTHON_DIR} to {ZIP_FILE}")
 else:
     print(f"Error: {PYTHON_DIR} directory not found")

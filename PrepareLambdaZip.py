@@ -1,3 +1,10 @@
+"""
+Prepares zip files with the Lambda Function and the Lambda Layer.
+DOES NOT WORK! Since pip compiles it in wichever OS it is run in (and I use Windows), the packages won't work in AWS Lambda (which uses Linux).
+See PrepareLambdaZip_Docker.py instead.
+"""
+
+
 import os
 import shutil
 import subprocess

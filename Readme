@@ -1,0 +1,3 @@
+Example of how to package a Python Lambda function, plus its dependencies for a Lambda Layer.
+
+The important part is installing the dependencies in an environment similar to AWS Lambda's. This is done by creating a temporary Docker container.

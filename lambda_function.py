@@ -8,7 +8,7 @@ s3_client = boto3.client('s3')
 
 def lambda_handler(event, context):
     
-    print(colorama.Fore.GREEN + "Hello, World!" + colorama.Fore.Reset)
+    print(colorama.Fore.GREEN + "Hello, World!" + colorama.Fore.RESET)
 
     # Optional. These only work if the Lambda is tested with an S3:PUT event template, for example
     # record = event['Records'][0]

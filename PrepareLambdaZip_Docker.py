@@ -27,14 +27,17 @@ zipfile.ZipFile(ZIP_FILE, "w", zipfile.ZIP_DEFLATED).write("lambda_function.py")
 ## LAMBDA LAYER ##
 ##################
 CONTAINER_NAME = "python-container"
-IMAGE = "python:3.11-slim"
+IMAGE = "public.ecr.aws/sam/build-python3.11:1.135.0-20250310201004" # Image that closely resembles the Lambda environment. https://gallery.ecr.aws/sam/build-python3.11
 ZIP_FILE = "lambda-layer.zip"
 PYTHON_DIR = "python"    # In Lambda Layers, packages must go in a folder called 'python'
 
+# Create 'python' folder
+if os.path.exists(PYTHON_DIR):
+    shutil.rmtree(PYTHON_DIR)
 os.mkdir(PYTHON_DIR)
 
 # Run the temporary container.
-# # Mounts current folder as a volume, and installs packages in 'python' folder so that we can zip them afterwards
+# Mounts current folder as a volume, and installs packages in 'python' folder so that we can zip them afterwards
 subprocess.run([
     "docker", "run", "--rm", "-v", f"{os.getcwd()}:/app", 
     "-w", "/app", "--name", CONTAINER_NAME, IMAGE, 
